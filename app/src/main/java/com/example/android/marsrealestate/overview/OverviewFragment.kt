@@ -55,7 +55,9 @@ class OverviewFragment : Fragment() {
         binding.viewModel = viewModel
 
         // Inicializando o RecyclerViewadaptador em binding.photosGridum novo PhotoGridAdapterobjeto
-        binding.photosGrid.adapter = PhotoGridAdapter()
+        binding.photosGrid.adapter = PhotoGridAdapter(PhotoGridAdapter.OnClickListener {
+            viewModel.displayPropertyDetails(it)
+        })
 
         setHasOptionsMenu(true)
         return binding.root
