@@ -42,7 +42,7 @@ private val retrofit = Retrofit.Builder()
         .build()
 
 interface MarsApiService{
-    //@GET("realestate")
+    @GET("realestate")
     suspend fun getProperties(@Query("filter") type: String): List<MarsProperty>  }
 
 object MarsApi{
