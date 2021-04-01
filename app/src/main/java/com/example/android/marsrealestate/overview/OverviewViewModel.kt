@@ -40,12 +40,15 @@ class OverviewViewModel : ViewModel() {
     val status: LiveData<MarsApiStatus>
         get() = _status
 
-    // adicione dados ativos internos (mutáveis) e externos (imutáveis) para um único MarsPropertyobjeto
+    // Adicionando dados ativos internos (mutáveis) e externos (imutáveis) para um único MarsPropertyobjeto
     private val _properties = MutableLiveData<List<MarsProperty>>()
-
     val properties: LiveData<List<MarsProperty>>
         get() = _properties
 
+    // Acionando a navegação para um fragmento que mostra detalhes sobre o item clicado
+    private val _navigateToSelectedProperty = MutableLiveData<MarsProperty>()
+    val navigateToSelectedProperty: LiveData<MarsProperty>
+        get() = _navigateToSelectedProperty
 
     /**
      * Call getMarsRealEstateProperties() on init so we can display status immediately.
@@ -73,5 +76,13 @@ class OverviewViewModel : ViewModel() {
 
     fun updateFilter(filter: MarsApiFilter) {
         getMarsRealEstateProperties(filter)
+    }
+
+    fun displayPropertyDetails(marsProperty: MarsProperty) {
+        _navigateToSelectedProperty.value = marsProperty
+    }
+
+    fun displayPropertyDetailsComplete() {
+        _navigateToSelectedProperty.value = null
     }
 }
