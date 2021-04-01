@@ -36,7 +36,7 @@ class OverviewViewModel : ViewModel() {
     private val _status = MutableLiveData<MarsApiStatus>()
 
     // The external immutable LiveData for the response String
-    val response: LiveData<MarsApiStatus>
+    val status: LiveData<MarsApiStatus>
         get() = _status
 
     // adicione dados ativos internos (mutáveis) e externos (imutáveis) para um único MarsPropertyobjeto
